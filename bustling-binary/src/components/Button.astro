@@ -1,0 +1,52 @@
+---
+interface Props {
+    url: string;
+    text: string;
+    variant?: "line" | "quiet";
+}
+
+const { url, text, variant = "line" } = Astro.props;
+---
+
+<a href={url} class={`btn btn--${variant}`} target="_blank" rel="noopener noreferrer">
+    <span>{text}</span>
+    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+</a>
+
+<style>
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        width: fit-content;
+        max-width: 100%;
+        padding: 0 0 7px;
+        border-bottom: 1px solid rgba(52, 78, 66, 0.32);
+        color: #344e42;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.66rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        line-height: 1.35;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+    }
+
+    .btn:hover {
+        gap: 13px;
+        border-color: #6f8c7c;
+        color: #6f8c7c;
+    }
+
+    .btn--quiet {
+        border-color: rgba(52, 78, 66, 0.22);
+        color: rgba(52, 78, 66, 0.7);
+    }
+
+    .btn__arrow {
+        font-family: Georgia, serif;
+        font-size: 0.86rem;
+        line-height: 1;
+    }
+</style>

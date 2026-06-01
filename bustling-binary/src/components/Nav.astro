@@ -1,0 +1,124 @@
+<nav class="top-nav" aria-label="Principal">
+    <a class="brand" href="/" aria-label="Inicio">
+        <span>Casilda</span>
+        <span aria-hidden="true">&</span>
+        <span>Rodrigo</span>
+    </a>
+
+    <div class="links">
+        <a class="link" href="/">Inicio</a>
+        <a class="link" href="#ubicacion" id="nav-ubicacion">Ubicación</a>
+        <a class="link" href="#rsvp" id="nav-asistencia">Asistencia</a>
+        <a class="link" href="#lista" id="nav-lista">Lista</a>
+    </div>
+</nav>
+
+<script is:inline>
+    (function () {
+        const isHome = location.pathname === "/" || location.pathname === "";
+        if (isHome) return;
+
+        const ids = ["nav-ubicacion", "nav-asistencia", "nav-lista"];
+        ids.forEach((id) => {
+            const a = document.getElementById(id);
+            if (a) a.href = "/" + a.getAttribute("href");
+        });
+    })();
+</script>
+
+<style>
+    .top-nav {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        min-height: 68px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 18px;
+        padding: 14px clamp(18px, 4vw, 54px);
+        background: rgba(244, 246, 240, 0.94);
+        border-bottom: 1px solid rgba(52, 78, 66, 0.12);
+        backdrop-filter: blur(14px);
+    }
+
+    .brand {
+        grid-column: 2;
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 7px;
+        color: #293d34;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.34rem;
+        font-weight: 400;
+        line-height: 1;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .brand span:nth-child(2) {
+        color: #8da394;
+        font-size: 0.72em;
+        font-style: italic;
+    }
+
+    .links {
+        grid-column: 3;
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(13px, 2vw, 24px);
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .link {
+        flex: 0 0 auto;
+        color: rgba(41, 61, 52, 0.64);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+    }
+
+    .link:hover {
+        color: #293d34;
+    }
+
+    @media (max-width: 760px) {
+        .top-nav {
+            min-height: 84px;
+            grid-template-columns: 1fr;
+            gap: 11px;
+            padding: 13px 14px 11px;
+        }
+
+        .brand,
+        .links {
+            grid-column: 1;
+            justify-self: center;
+        }
+
+        .links {
+            width: 100%;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .link {
+            font-size: 0.59rem;
+            letter-spacing: 0.11em;
+        }
+    }
+</style>
