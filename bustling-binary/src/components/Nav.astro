@@ -2,11 +2,21 @@
     <a class="brand" href="/" aria-label="Inicio">Casilda <span>y</span> Rodrigo</a>
 
     <div class="links">
-        <a class="link" href="/">Inicio</a>
+        <a class="link" href="#inicio" id="nav-inicio">Inicio</a>
         <a class="link" href="#ubicacion" id="nav-ubicacion">Ubicación</a>
         <a class="link" href="#rsvp" id="nav-asistencia">Asistencia</a>
-        <a class="link" href="#lista" id="nav-lista">Lista</a>
+        <a class="link" href="#lista" id="nav-lista">Lista de bodas</a>
     </div>
+
+    <details class="mobile-menu">
+        <summary aria-label="Abrir menú"><span></span><span></span><span></span></summary>
+        <div class="mobile-menu__links">
+            <a href="#inicio">Inicio</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#rsvp">Asistencia</a>
+            <a href="#lista">Lista de bodas</a>
+        </div>
+    </details>
 </nav>
 
 <script is:inline>
@@ -14,7 +24,7 @@
         const isHome = location.pathname === "/" || location.pathname === "";
         if (isHome) return;
 
-        const ids = ["nav-ubicacion", "nav-asistencia", "nav-lista"];
+        const ids = ["nav-inicio", "nav-ubicacion", "nav-asistencia", "nav-lista"];
         ids.forEach((id) => {
             const a = document.getElementById(id);
             if (a) a.href = "/" + a.getAttribute("href");
@@ -27,86 +37,99 @@
         position: sticky;
         top: 0;
         z-index: 30;
-        display: grid;
-        padding: 12px 14px 9px;
-        background: rgba(246, 243, 238, 0.9);
-        border-bottom: 1px solid rgba(47, 51, 45, 0.09);
-        backdrop-filter: blur(18px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px max(18px, env(safe-area-inset-left)) 14px max(18px, env(safe-area-inset-right));
+        background: rgba(241, 239, 223, 0.9);
+        border-bottom: 1px solid rgba(34, 53, 41, 0.08);
+        backdrop-filter: blur(16px);
     }
 
     .brand {
-        display: none;
-        justify-self: center;
         color: var(--ink);
         font-family: var(--font-display);
-        font-size: 1.26rem;
-        font-weight: 300;
+        font-size: clamp(1.35rem, 5.2vw, 1.8rem);
+        font-weight: 400;
         line-height: 1;
+        letter-spacing: -0.03em;
         text-decoration: none;
         white-space: nowrap;
     }
 
     .brand span {
-        color: var(--sage);
+        color: var(--leaf);
         font-size: 0.8em;
         font-style: italic;
     }
 
     .links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: clamp(12px, 4vw, 20px);
-        min-width: 0;
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
-
-    .links::-webkit-scrollbar {
         display: none;
     }
 
+    .mobile-menu {
+        position: relative;
+    }
+
+    .mobile-menu summary {
+        display: grid;
+        gap: 5px;
+        width: 28px;
+        padding: 4px 0;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-menu summary span {
+        height: 1px;
+        background: var(--ink);
+    }
+
+    .mobile-menu__links {
+        position: absolute;
+        top: calc(100% + 14px);
+        right: 0;
+        display: grid;
+        gap: 13px;
+        min-width: 160px;
+        padding: 16px 18px;
+        border: 1px solid rgba(34, 53, 41, 0.12);
+        border-radius: 16px;
+        background: rgba(255, 250, 240, 0.96);
+        box-shadow: 0 18px 44px rgba(34, 53, 41, 0.12);
+    }
+
+    .mobile-menu__links a,
     .link {
-        flex: 0 0 auto;
-        color: rgba(47, 51, 45, 0.48);
+        color: var(--ink);
         font-family: var(--font-body);
-        font-size: 0.56rem;
-        font-weight: 300;
-        letter-spacing: 0.14em;
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
         text-decoration: none;
         text-transform: uppercase;
         white-space: nowrap;
-        transition: color 0.2s ease;
-    }
-
-    .link:hover {
-        color: var(--ink);
     }
 
     @media (min-width: 760px) {
         .top-nav {
-            min-height: 68px;
-            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-            align-items: center;
-            gap: 18px;
-            padding: 14px clamp(24px, 4vw, 54px);
-        }
-
-        .brand {
-            display: block;
-            grid-column: 2;
-            font-size: 1.34rem;
+            min-height: 72px;
+            padding: 18px clamp(28px, 5vw, 58px);
         }
 
         .links {
-            grid-column: 3;
-            justify-self: end;
-            justify-content: flex-end;
-            gap: clamp(13px, 2vw, 24px);
+            display: flex;
+            align-items: center;
+            gap: clamp(26px, 4vw, 44px);
         }
 
-        .link {
-            font-size: 0.62rem;
+        .mobile-menu {
+            display: none;
         }
     }
 </style>

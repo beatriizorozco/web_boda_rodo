@@ -3,11 +3,6 @@ import Button from "./Button.astro";
 ---
 
 <main>
-    <section class="intro reveal" aria-label="Resumen de la boda">
-        <p>Guadalupe, Cáceres</p>
-        <strong>Sábado 19 de septiembre</strong>
-    </section>
-
     <section id="ubicacion" class="places" aria-label="Ubicaciones">
         <article class="place reveal">
             <figure class="place__image">
@@ -17,11 +12,11 @@ import Button from "./Button.astro";
                 <p class="kicker">Ceremonia</p>
                 <h2>Real Monasterio de Nuestra Señora de Guadalupe</h2>
                 <p>Plaza Sta. María de Guadalupe<br />10140 Guadalupe, Cáceres</p>
-                <Button url="https://maps.app.goo.gl/X1X32SgFZemfSFDx8" text="Cómo llegar" />
+                <Button url="https://maps.app.goo.gl/X1X32SgFZemfSFDx8" text="Cómo llegar" variant="quiet" />
             </div>
         </article>
 
-        <article class="place reveal place--reverse">
+        <article class="place reveal">
             <figure class="place__image">
                 <img src="/banquete.webp" alt="Vista aérea del Cortijo de Gorbea" loading="lazy" />
             </figure>
@@ -29,31 +24,29 @@ import Button from "./Button.astro";
                 <p class="kicker">Celebración</p>
                 <h2>Cortijo de Gorbea</h2>
                 <p>Carretera EX 116, km 4,800<br />06760 Navalvillar de Pela, Badajoz</p>
-                <Button url="https://maps.app.goo.gl/eQwNPLijpexz96Hs7" text="Cómo llegar" />
+                <Button url="https://maps.app.goo.gl/eQwNPLijpexz96Hs7" text="Cómo llegar" variant="quiet" />
             </div>
         </article>
     </section>
 
     <section id="rsvp" class="statement reveal">
-        <p class="kicker">Confirmación</p>
+        <p class="kicker">Asistencia</p>
         <h2>¿Nos acompañas?</h2>
         <p>
-            Nos encantará contar contigo. Puedes confirmar tu asistencia y
-            comunicarnos cualquier alergia o intolerancia en el formulario.
+            Confírmanos quiénes vendréis e indícanos si debemos tener en cuenta
+            alguna alergia, intolerancia o necesidad especial.
         </p>
         <Button url="https://docs.google.com/forms/d/e/1FAIpQLSd3WrbNaQY9xYywGCddYKZ4MBE9CgRPWT4boddcgYc9bDvisQ/viewform?usp=publish-editor" text="Confirmar asistencia" />
     </section>
 
     <section id="lista" class="gift reveal">
-        <div>
-            <p class="kicker">Lista de bodas</p>
-            <h2>Celebrarlo juntos es lo importante</h2>
+        <div class="gift__heading">
+            <h2>Lista de boda</h2>
         </div>
         <div>
             <p>
-                Lo que más nos apetece es compartir este día con vosotros. Para
-                quienes queráis acompañarnos también en el comienzo de esta nueva
-                etapa, os dejamos nuestro número de cuenta.
+                Lo importante es teneros cerca. Si además queréis acompañarnos en el comienzo
+                de esta nueva etapa, os dejamos nuestros datos.
             </p>
             <div class="iban">
                 <span>IBAN</span>
@@ -89,15 +82,19 @@ import Button from "./Button.astro";
     }
 
     main {
-        background: var(--page-bg);
+        background:
+            radial-gradient(circle at 100% 8%, rgba(125, 143, 99, 0.15), transparent 28%),
+            linear-gradient(180deg, var(--page-bg) 0%, #fbf6eb 50%, var(--page-bg) 100%);
         color: var(--ink);
-        padding: 46px 18px 74px;
+        padding: 38px 18px 72px;
     }
 
     .reveal {
         opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(14px);
+        transition:
+            opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.revealed {
@@ -105,146 +102,141 @@ import Button from "./Button.astro";
         transform: translateY(0);
     }
 
-    .intro,
     .places,
     .statement,
     .gift {
-        width: min(100%, 1080px);
+        width: min(100%, 780px);
         margin-inline: auto;
-    }
-
-    .intro {
-        display: grid;
-        gap: 10px;
-        margin-bottom: 58px;
-        padding: 28px 0;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        text-align: center;
-    }
-
-    .intro p,
-    .kicker,
-    .iban span,
-    .iban small {
-        font-family: var(--font-body);
-    }
-
-    .intro p,
-    .kicker,
-    .iban span,
-    .iban small {
-        margin: 0;
-        color: rgba(47, 51, 45, 0.52);
-        font-size: 0.62rem;
-        font-weight: 300;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-    }
-
-    .intro strong {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: clamp(2.25rem, 11vw, 3.45rem);
-        font-weight: 300;
-        line-height: 0.98;
     }
 
     .places {
         display: grid;
-        gap: 54px;
-        margin-bottom: 68px;
+        gap: 36px;
+        margin-bottom: 44px;
+        padding: 12px 0;
     }
 
     .place {
         display: grid;
-        gap: 24px;
+        justify-items: center;
+        gap: 16px;
+        text-align: center;
     }
 
     .place__image {
-        width: min(82%, 330px);
+        width: min(86%, 340px);
         margin: 0;
         overflow: hidden;
-        border-radius: 10px;
-        background: var(--wash);
-    }
-
-    .place:nth-child(2) .place__image {
-        justify-self: end;
+        aspect-ratio: 1.34;
+        border-radius: 24px 24px 10px 10px;
+        background: transparent;
+        box-shadow: 0 16px 42px rgba(34, 53, 41, 0.08);
     }
 
     .place__image img {
         width: 100%;
-        aspect-ratio: 0.82;
+        height: 100%;
         display: block;
         object-fit: cover;
-        filter: saturate(0.82) contrast(0.96) brightness(1.01);
-        transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        filter: saturate(0.82) contrast(0.94) brightness(1.08);
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .place:hover .place__image img {
         transform: scale(1.025);
     }
 
-    .place__body {
-        display: grid;
-        gap: 14px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid var(--line);
+    .place:first-child .place__image img {
+        object-fit: cover;
+        object-position: center 54%;
     }
 
-    .kicker {
+    .place__body {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+        max-width: 360px;
+    }
+
+    .kicker,
+    .iban span,
+    .iban small {
+        margin: 0;
         color: var(--sage);
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
     }
 
     h2 {
         margin: 0;
         color: var(--ink);
         font-family: var(--font-display);
-        font-size: clamp(2.25rem, 11vw, 3.75rem);
-        font-weight: 300;
-        letter-spacing: 0;
-        line-height: 0.98;
+        font-size: clamp(2rem, 8vw, 3.15rem);
+        font-weight: 400;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+    }
+
+    .place h2 {
+        font-size: clamp(1.85rem, 7vw, 2.45rem);
+        letter-spacing: -0.025em;
     }
 
     .place__body p:not(.kicker),
     .statement > p:not(.kicker),
     .gift p {
         margin: 0;
-        color: rgba(47, 51, 45, 0.68);
+        color: var(--muted);
         font-family: var(--font-body);
-        font-size: 0.9rem;
-        font-weight: 300;
-        line-height: 1.82;
+        font-size: 0.94rem;
+        font-weight: 400;
+        line-height: 1.75;
+    }
+
+    .place :global(.btn) {
+        margin-top: 9px;
+    }
+
+    .statement,
+    .gift {
+        border: 1px solid rgba(36, 69, 50, 0.16);
+        border-radius: 30px;
+        background:
+            radial-gradient(circle at 100% 0%, rgba(125, 143, 99, 0.13), transparent 36%),
+            rgba(255, 250, 240, 0.84);
+        box-shadow: 0 18px 46px rgba(46, 61, 51, 0.06);
     }
 
     .statement {
         display: grid;
-        gap: 17px;
-        margin-bottom: 72px;
-        padding: 38px 0;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
+        gap: 15px;
+        margin-bottom: 34px;
+        padding: 34px 24px;
         text-align: center;
     }
 
-    .statement > p:not(.kicker) {
-        max-width: 570px;
-        margin-inline: auto;
-    }
-
-    .statement .btn {
+    .statement :global(.btn) {
         justify-self: center;
+        margin-inline: auto;
+        margin-top: 4px;
     }
 
     .gift {
         display: grid;
-        gap: 26px;
+        gap: 18px;
+        padding: 34px 24px;
+    }
+
+    .gift__heading {
+        text-align: center;
     }
 
     .gift > div {
         display: grid;
-        gap: 14px;
+        gap: 12px;
     }
 
     .iban {
@@ -257,71 +249,67 @@ import Button from "./Button.astro";
     .iban strong {
         color: var(--ink);
         font-family: var(--font-display);
-        font-size: clamp(1.42rem, 6vw, 2.1rem);
-        font-weight: 300;
+        font-size: clamp(1.28rem, 5.3vw, 1.95rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
         overflow-wrap: anywhere;
     }
 
     @media (min-width: 760px) {
         main {
-            padding: 72px clamp(28px, 5vw, 72px) 96px;
-        }
-
-        .intro {
-            grid-template-columns: auto auto;
-            justify-content: center;
-            align-items: baseline;
-            gap: clamp(24px, 4vw, 54px);
-            margin-bottom: 86px;
+            padding: 54px clamp(28px, 5vw, 72px) 90px;
         }
 
         .places {
-            gap: 86px;
-            margin-bottom: 104px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0;
+            margin-bottom: 52px;
+            padding: 24px 0 18px;
         }
 
         .place {
-            grid-template-columns: minmax(250px, 0.52fr) minmax(0, 1fr);
-            align-items: center;
-            gap: clamp(34px, 6vw, 86px);
+            position: relative;
+            padding: 0 clamp(24px, 5vw, 58px);
         }
 
-        .place--reverse {
-            grid-template-columns: minmax(0, 1fr) minmax(250px, 0.52fr);
-        }
-
-        .place--reverse .place__image {
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        .place--reverse .place__body {
-            grid-column: 1;
-            grid-row: 1;
+        .place:first-child::after {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            bottom: 20px;
+            width: 1px;
+            background: rgba(34, 53, 41, 0.14);
+            content: "";
         }
 
         .place__image {
-            width: min(100%, 420px);
+            width: min(100%, 300px);
         }
 
-        .place__image img {
-            aspect-ratio: 0.86;
+        .place__image {
+            aspect-ratio: 1.34;
         }
 
-        .place__body {
-            padding-bottom: 0;
-            border-bottom: 0;
+        .place h2 {
+            font-size: clamp(1.9rem, 2.6vw, 2.55rem);
         }
 
         .statement {
-            max-width: 720px;
-            margin-bottom: 104px;
-            padding: 46px 0;
+            max-width: 760px;
+            margin-bottom: 44px;
+            padding: 46px 42px;
         }
 
         .gift {
-            grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1fr);
-            gap: clamp(32px, 7vw, 84px);
+            grid-template-columns: 1fr;
+            gap: 22px;
+            padding: 44px 42px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .gift > div {
+            justify-items: center;
         }
     }
 </style>

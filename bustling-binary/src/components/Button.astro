@@ -2,10 +2,10 @@
 interface Props {
     url: string;
     text: string;
-    variant?: "line" | "quiet";
+    variant?: "solid" | "line" | "quiet";
 }
 
-const { url, text, variant = "line" } = Astro.props;
+const { url, text, variant = "solid" } = Astro.props;
 ---
 
 <a href={url} class={`btn btn--${variant}`} target="_blank" rel="noopener noreferrer">
@@ -17,36 +17,58 @@ const { url, text, variant = "line" } = Astro.props;
     .btn {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 12px;
         width: fit-content;
         max-width: 100%;
-        padding: 0 0 7px;
-        border-bottom: 1px solid rgba(47, 51, 45, 0.28);
-        color: rgba(47, 51, 45, 0.78);
+        min-height: 50px;
+        padding: 0 28px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: var(--leaf);
+        color: var(--paper);
         font-family: var(--font-body);
-        font-size: 0.62rem;
-        font-weight: 300;
-        letter-spacing: 0.14em;
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0.09em;
         line-height: 1.35;
         text-decoration: none;
         text-transform: uppercase;
-        transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
     .btn:hover {
-        gap: 13px;
-        border-color: var(--sage);
-        color: var(--sage);
+        background: #183324;
+        color: var(--paper);
+        transform: translateY(-1px);
     }
 
     .btn--quiet {
-        border-color: rgba(52, 78, 66, 0.22);
-        color: var(--muted);
+        border-color: rgba(36, 69, 50, 0.22);
+        background: transparent;
+        color: var(--leaf);
+    }
+
+    .btn--line {
+        min-height: auto;
+        padding: 0 0 7px;
+        border: 0;
+        border-bottom: 1px solid rgba(36, 69, 50, 0.28);
+        border-radius: 0;
+        background: transparent;
+        color: var(--leaf);
+        letter-spacing: 0.05em;
+    }
+
+    .btn--line:hover {
+        background: transparent;
+        color: #183324;
+        transform: none;
     }
 
     .btn__arrow {
         font-family: Georgia, serif;
-        font-size: 0.86rem;
+        font-size: 0.88rem;
         line-height: 1;
     }
 </style>
