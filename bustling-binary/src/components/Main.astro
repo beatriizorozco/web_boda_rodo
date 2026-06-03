@@ -6,7 +6,6 @@ import Button from "./Button.astro";
     <section class="intro reveal" aria-label="Resumen de la boda">
         <p>Guadalupe, Cáceres</p>
         <strong>Sábado 19 de septiembre</strong>
-        <p>2026 · Fecha provisional</p>
     </section>
 
     <section id="ubicacion" class="places" aria-label="Ubicaciones">
@@ -22,7 +21,7 @@ import Button from "./Button.astro";
             </div>
         </article>
 
-        <article class="place reveal">
+        <article class="place reveal place--reverse">
             <figure class="place__image">
                 <img src="/banquete.webp" alt="Vista aérea del Cortijo de Gorbea" loading="lazy" />
             </figure>
@@ -39,10 +38,10 @@ import Button from "./Button.astro";
         <p class="kicker">Confirmación</p>
         <h2>¿Nos acompañas?</h2>
         <p>
-            Nos encantará contar contigo. Próximamente compartiremos el formulario
-            para confirmar asistencia y comunicar cualquier alergia o intolerancia.
+            Nos encantará contar contigo. Puedes confirmar tu asistencia y
+            comunicarnos cualquier alergia o intolerancia en el formulario.
         </p>
-        <Button url="https://forms.gle/ER6xNFeWJFc3uii59" text="Confirmar asistencia" />
+        <Button url="https://docs.google.com/forms/d/e/1FAIpQLSd3WrbNaQY9xYywGCddYKZ4MBE9CgRPWT4boddcgYc9bDvisQ/viewform?usp=publish-editor" text="Confirmar asistencia" />
     </section>
 
     <section id="lista" class="gift reveal">
@@ -90,15 +89,15 @@ import Button from "./Button.astro";
     }
 
     main {
-        background: #f4f6f0;
-        color: #293d34;
-        padding: clamp(42px, 6vw, 74px) clamp(18px, 5vw, 72px) 76px;
+        background: var(--page-bg);
+        color: var(--ink);
+        padding: 46px 18px 74px;
     }
 
     .reveal {
         opacity: 0;
         transform: translateY(18px);
-        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.revealed {
@@ -110,19 +109,17 @@ import Button from "./Button.astro";
     .places,
     .statement,
     .gift {
-        width: min(100%, 1040px);
+        width: min(100%, 1080px);
         margin-inline: auto;
     }
 
     .intro {
-        margin-bottom: clamp(58px, 8vw, 92px);
-        padding: 22px 0 26px;
-        border-top: 1px solid rgba(52, 78, 66, 0.15);
-        border-bottom: 1px solid rgba(52, 78, 66, 0.15);
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: baseline;
-        gap: 22px;
+        gap: 10px;
+        margin-bottom: 58px;
+        padding: 28px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
         text-align: center;
     }
 
@@ -130,175 +127,201 @@ import Button from "./Button.astro";
     .kicker,
     .iban span,
     .iban small {
-        font-family: "Montserrat", sans-serif;
+        font-family: var(--font-body);
     }
 
-    .intro p {
+    .intro p,
+    .kicker,
+    .iban span,
+    .iban small {
         margin: 0;
-        color: rgba(52, 78, 66, 0.6);
-        font-size: 0.64rem;
-        font-weight: 500;
+        color: rgba(47, 51, 45, 0.52);
+        font-size: 0.62rem;
+        font-weight: 300;
         letter-spacing: 0.16em;
         text-transform: uppercase;
     }
 
     .intro strong {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem, 4vw, 3.25rem);
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: 0;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: clamp(2.25rem, 11vw, 3.45rem);
+        font-weight: 300;
+        line-height: 0.98;
     }
 
     .places {
-        margin-bottom: clamp(62px, 9vw, 106px);
+        display: grid;
+        gap: 54px;
+        margin-bottom: 68px;
     }
 
     .place {
         display: grid;
-        grid-template-columns: minmax(250px, 0.56fr) minmax(0, 1fr);
-        gap: clamp(28px, 5vw, 70px);
-        align-items: center;
-        padding: clamp(30px, 4vw, 48px) 0;
-        border-top: 1px solid rgba(52, 78, 66, 0.14);
-    }
-
-    .place:last-child {
-        border-bottom: 1px solid rgba(52, 78, 66, 0.14);
+        gap: 24px;
     }
 
     .place__image {
+        width: min(82%, 330px);
         margin: 0;
-        aspect-ratio: 1.34;
         overflow: hidden;
-        background: #e4eadf;
+        border-radius: 10px;
+        background: var(--wash);
+    }
+
+    .place:nth-child(2) .place__image {
+        justify-self: end;
     }
 
     .place__image img {
         width: 100%;
-        height: 100%;
+        aspect-ratio: 0.82;
         display: block;
         object-fit: cover;
-        filter: saturate(0.8) contrast(0.96);
-        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        filter: saturate(0.82) contrast(0.96) brightness(1.01);
+        transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .place:hover .place__image img {
         transform: scale(1.025);
     }
 
+    .place__body {
+        display: grid;
+        gap: 14px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--line);
+    }
+
     .kicker {
-        margin: 0 0 9px;
-        color: #708275;
-        font-size: 0.63rem;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+        color: var(--sage);
     }
 
     h2 {
         margin: 0;
-        color: #293d34;
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem, 4.2vw, 3.6rem);
-        font-weight: 400;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: clamp(2.25rem, 11vw, 3.75rem);
+        font-weight: 300;
         letter-spacing: 0;
-        line-height: 1.04;
+        line-height: 0.98;
     }
 
     .place__body p:not(.kicker),
     .statement > p:not(.kicker),
     .gift p {
-        color: rgba(41, 61, 52, 0.68);
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.86rem;
+        margin: 0;
+        color: rgba(47, 51, 45, 0.68);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
         font-weight: 300;
         line-height: 1.82;
     }
 
-    .place__body p:not(.kicker) {
-        margin: 19px 0 23px;
-    }
-
     .statement {
-        max-width: 690px;
-        margin-bottom: clamp(62px, 9vw, 106px);
-        padding: clamp(28px, 4vw, 42px) 0;
+        display: grid;
+        gap: 17px;
+        margin-bottom: 72px;
+        padding: 38px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
         text-align: center;
-        border-top: 1px solid rgba(52, 78, 66, 0.15);
-        border-bottom: 1px solid rgba(52, 78, 66, 0.15);
     }
 
     .statement > p:not(.kicker) {
         max-width: 570px;
-        margin: 18px auto 24px;
+        margin-inline: auto;
+    }
+
+    .statement .btn {
+        justify-self: center;
     }
 
     .gift {
         display: grid;
-        grid-template-columns: minmax(240px, 0.82fr) minmax(0, 1fr);
-        gap: clamp(28px, 6vw, 76px);
+        gap: 26px;
     }
 
-    .gift p {
-        margin: 0 0 22px;
+    .gift > div {
+        display: grid;
+        gap: 14px;
     }
 
     .iban {
         display: grid;
         gap: 8px;
         padding-top: 18px;
-        border-top: 1px solid rgba(52, 78, 66, 0.15);
-    }
-
-    .iban span,
-    .iban small {
-        color: rgba(52, 78, 66, 0.58);
-        font-size: 0.61rem;
-        font-weight: 500;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
+        border-top: 1px solid var(--line);
     }
 
     .iban strong {
-        color: #293d34;
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(1.35rem, 2.8vw, 2.15rem);
-        font-weight: 400;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: clamp(1.42rem, 6vw, 2.1rem);
+        font-weight: 300;
         overflow-wrap: anywhere;
     }
 
-    @media (max-width: 760px) {
+    @media (min-width: 760px) {
         main {
-            padding: 34px 18px 58px;
-        }
-
-        .intro,
-        .place,
-        .gift {
-            grid-template-columns: 1fr;
+            padding: 72px clamp(28px, 5vw, 72px) 96px;
         }
 
         .intro {
-            gap: 8px;
-            text-align: left;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: baseline;
+            gap: clamp(24px, 4vw, 54px);
+            margin-bottom: 86px;
+        }
+
+        .places {
+            gap: 86px;
+            margin-bottom: 104px;
         }
 
         .place {
-            gap: 22px;
+            grid-template-columns: minmax(250px, 0.52fr) minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(34px, 6vw, 86px);
+        }
+
+        .place--reverse {
+            grid-template-columns: minmax(0, 1fr) minmax(250px, 0.52fr);
+        }
+
+        .place--reverse .place__image {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .place--reverse .place__body {
+            grid-column: 1;
+            grid-row: 1;
         }
 
         .place__image {
-            aspect-ratio: 1.42;
+            width: min(100%, 420px);
+        }
+
+        .place__image img {
+            aspect-ratio: 0.86;
+        }
+
+        .place__body {
+            padding-bottom: 0;
+            border-bottom: 0;
         }
 
         .statement {
-            text-align: left;
+            max-width: 720px;
+            margin-bottom: 104px;
+            padding: 46px 0;
         }
 
-        .statement > p:not(.kicker) {
-            margin-left: 0;
-            margin-right: 0;
+        .gift {
+            grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1fr);
+            gap: clamp(32px, 7vw, 84px);
         }
     }
 </style>
