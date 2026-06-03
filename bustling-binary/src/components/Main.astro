@@ -12,6 +12,7 @@ import Button from "./Button.astro";
                 <p class="kicker">Ceremonia</p>
                 <h2>Real Monasterio de Nuestra Señora de Guadalupe</h2>
                 <p>Plaza Sta. María de Guadalupe<br />10140 Guadalupe, Cáceres</p>
+                <p class="place__time">13:00 h</p>
                 <Button url="https://maps.app.goo.gl/X1X32SgFZemfSFDx8" text="Cómo llegar" variant="quiet" />
             </div>
         </article>
@@ -51,7 +52,6 @@ import Button from "./Button.astro";
             <div class="iban">
                 <span>IBAN</span>
                 <strong class="no-autolink">ES58 0128 8700 1301 0061 3981</strong>
-                <small>Concepto: “Boda Casilda y Rodrigo”</small>
             </div>
         </div>
     </section>
@@ -194,6 +194,16 @@ import Button from "./Button.astro";
         font-size: 0.94rem;
         font-weight: 400;
         line-height: 1.75;
+    }
+
+    .place__time {
+        margin-top: 2px;
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        line-height: 1;
+        text-transform: uppercase;
     }
 
     .place :global(.btn) {

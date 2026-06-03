@@ -6,7 +6,7 @@ const image = "/casilda-rodrigo.webp";
     <img src={image} alt="Casilda y Rodrigo en un jardín" />
 
     <div class="hero__overlay">
-        <p>19 septiembre 2026</p>
+        <p>19 septiembre 2026 · 13:00 h</p>
         <h1 id="hero-title">
             <span>Casilda</span>
             <em>y</em>
@@ -64,7 +64,7 @@ const image = "/casilda-rodrigo.webp";
     .hero__overlay p {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 0.64rem;
+        font-size: 0.72rem;
         font-weight: 400;
         letter-spacing: 0.1em;
         line-height: 1.35;
@@ -154,6 +154,10 @@ const image = "/casilda-rodrigo.webp";
 
         .hero__overlay {
             padding-bottom: clamp(34px, 6vh, 62px);
+        }
+
+        .hero__overlay p {
+            font-size: 0.78rem;
         }
 
         h1 {
