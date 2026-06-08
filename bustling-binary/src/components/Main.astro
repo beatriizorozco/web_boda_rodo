@@ -6,33 +6,57 @@ import Button from "./Button.astro";
     <section id="ubicacion" class="places" aria-label="Ubicaciones">
         <article class="place reveal">
             <figure class="place__image">
-                <img src="/parroquia.webp" alt="Real Monasterio de Nuestra Señora de Guadalupe" loading="lazy" />
+                <img
+                    src="/parroquia.webp"
+                    alt="Real Monasterio de Nuestra Señora de Guadalupe"
+                    loading="lazy"
+                />
             </figure>
             <div class="place__body">
                 <p class="kicker">Ceremonia</p>
                 <h2>Real Monasterio de Nuestra Señora de Guadalupe</h2>
-                <p>Plaza Sta. María de Guadalupe<br />10140 Guadalupe, Cáceres</p>
+                <p>
+                    Plaza Sta. María de Guadalupe<br />10140 Guadalupe, Cáceres
+                </p>
                 <p class="place__time">13:00 h</p>
-                <Button url="https://maps.app.goo.gl/X1X32SgFZemfSFDx8" text="Cómo llegar" variant="quiet" />
+                <Button
+                    url="https://maps.app.goo.gl/X1X32SgFZemfSFDx8"
+                    text="Cómo llegar"
+                    variant="quiet"
+                />
             </div>
         </article>
 
         <article class="place reveal">
             <figure class="place__image">
-                <img src="/banquete.webp" alt="Vista aérea del Cortijo de Gorbea" loading="lazy" />
+                <img
+                    src="/banquete.webp"
+                    alt="Vista aérea del Cortijo de Gorbea"
+                    loading="lazy"
+                />
             </figure>
             <div class="place__body">
                 <p class="kicker">Celebración</p>
                 <h2>Cortijo de Gorbea</h2>
-                <p>Carretera EX 116, km 4,800<br />06760 Navalvillar de Pela, Badajoz</p>
-                <Button url="https://maps.app.goo.gl/eQwNPLijpexz96Hs7" text="Cómo llegar" variant="quiet" />
+                <p>
+                    Carretera EX 116, km 4,800<br />06760 Navalvillar de Pela,
+                    Badajoz
+                </p>
+                <Button
+                    url="https://maps.app.goo.gl/eQwNPLijpexz96Hs7"
+                    text="Cómo llegar"
+                    variant="quiet"
+                />
             </div>
         </article>
     </section>
 
     <section id="rsvp" class="statement reveal">
         <h2>¿Nos acompañáis?</h2>
-        <Button url="https://docs.google.com/forms/d/e/1FAIpQLSd3WrbNaQY9xYywGCddYKZ4MBE9CgRPWT4boddcgYc9bDvisQ/viewform?usp=publish-editor" text="Confirmar asistencia" />
+        <Button
+            url="https://docs.google.com/forms/d/e/1FAIpQLSd3WrbNaQY9xYywGCddYKZ4MBE9CgRPWT4boddcgYc9bDvisQ/viewform?usp=publish-editor"
+            text="Confirmar asistencia"
+        />
     </section>
 
     <section id="lista" class="gift reveal">
@@ -40,9 +64,16 @@ import Button from "./Button.astro";
             <h2>Lista de boda</h2>
         </div>
         <div>
+            <p>
+                Estamos felices de poder contar con vosotros en este día tan
+                especial. Si además queréis ayudarnos en esta etapa que
+                iniciamos con tanta ilusión, os estaremos muy agradecidos.
+            </p>
             <div class="iban">
                 <span>IBAN</span>
-                <strong class="no-autolink">ES58 0128 8700 1301 0061 3981</strong>
+                <strong class="no-autolink"
+                    >ES58 0128 8700 1301 0061 3981</strong
+                >
             </div>
         </div>
     </section>
@@ -59,7 +90,7 @@ import Button from "./Button.astro";
                 }
             });
         },
-        { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+        { threshold: 0.08, rootMargin: "0px 0px -30px 0px" },
     );
 
     revealEls.forEach((el) => observer.observe(el));
@@ -74,8 +105,17 @@ import Button from "./Button.astro";
 
     main {
         background:
-            radial-gradient(circle at 100% 8%, rgba(125, 143, 99, 0.15), transparent 28%),
-            linear-gradient(180deg, var(--page-bg) 0%, #fbf6eb 50%, var(--page-bg) 100%);
+            radial-gradient(
+                circle at 100% 8%,
+                rgba(125, 143, 99, 0.15),
+                transparent 28%
+            ),
+            linear-gradient(
+                180deg,
+                var(--page-bg) 0%,
+                #fbf6eb 50%,
+                var(--page-bg) 100%
+            );
         color: var(--ink);
         padding: 38px 18px 72px;
     }
@@ -206,7 +246,11 @@ import Button from "./Button.astro";
         border: 1px solid rgba(36, 69, 50, 0.16);
         border-radius: 30px;
         background:
-            radial-gradient(circle at 100% 0%, rgba(125, 143, 99, 0.13), transparent 36%),
+            radial-gradient(
+                circle at 100% 0%,
+                rgba(125, 143, 99, 0.13),
+                transparent 36%
+            ),
             rgba(255, 250, 240, 0.84);
         box-shadow: 0 18px 46px rgba(46, 61, 51, 0.06);
     }
