@@ -51,6 +51,24 @@ import Button from "./Button.astro";
         </article>
     </section>
 
+    <!-- PREBODA -->
+    <section class="preboda reveal" aria-label="Preboda">
+        <div class="preboda__content">
+            <p class="kicker">Preboda</p>
+            <h2>Restaurante Casa Pachi</h2>
+            <p>
+                Plaza Sta. María de Guadalupe, 24<br />
+                10140 Guadalupe, Cáceres
+            </p>
+            <p class="place__time">20:00 h</p>
+            <Button
+                url="https://www.google.com/maps/place//data=!4m2!3m1!1s0xd153f6c0036d4d7:0x4278aa30212c6041"
+                text="Cómo llegar"
+                variant="quiet"
+            />
+        </div>
+    </section>
+
     <section id="rsvp" class="statement reveal">
         <h2>¿Nos acompañáis?</h2>
         <Button
@@ -218,7 +236,8 @@ import Button from "./Button.astro";
 
     .place__body p:not(.kicker),
     .statement > p:not(.kicker),
-    .gift p {
+    .gift p,
+    .preboda__content > p:not(.kicker) {
         margin: 0;
         color: var(--muted);
         font-family: var(--font-body);
@@ -237,8 +256,38 @@ import Button from "./Button.astro";
         text-transform: uppercase;
     }
 
-    .place :global(.btn) {
+    .place :global(.btn),
+    .preboda :global(.btn) {
         margin-top: 9px;
+    }
+
+    /* PREBODA: bloque independiente, sin modificar las ubicaciones */
+    .preboda {
+        width: min(100%, 560px);
+        margin: 0 auto 44px;
+        padding: 34px 24px;
+        border-top: 1px solid rgba(36, 69, 50, 0.14);
+        border-bottom: 1px solid rgba(36, 69, 50, 0.14);
+        text-align: center;
+    }
+
+    .preboda__content {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+    }
+
+    .preboda h2 {
+        font-size: clamp(1.75rem, 7vw, 2.35rem);
+        letter-spacing: -0.025em;
+    }
+
+    .preboda .kicker {
+        margin-bottom: 2px;
+    }
+
+    .preboda .place__time {
+        margin-top: 2px;
     }
 
     .statement,
@@ -337,6 +386,15 @@ import Button from "./Button.astro";
 
         .place h2 {
             font-size: clamp(1.9rem, 2.6vw, 2.55rem);
+        }
+
+        .preboda {
+            margin-bottom: 52px;
+            padding: 38px 42px;
+        }
+
+        .preboda h2 {
+            font-size: clamp(1.9rem, 2.6vw, 2.45rem);
         }
 
         .statement {
